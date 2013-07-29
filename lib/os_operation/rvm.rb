@@ -6,9 +6,11 @@ module RVM
       puts "2)Mac OSX\n"
       puts "3)Centos or Redhat Linux"
       puts "4)Windows"
-      system = gets
-      case system
-      when system.to_i == 3
+      system = gets.chomp
+      puts system
+      case system.to_i
+       
+      when 3
         #          system "sudo apt-get install build-essential git-core"
         system "sudo yum install curl"
         system "sudo curl -L get.rvm.io | bash -s stable"
@@ -16,18 +18,19 @@ module RVM
         system "sudo yum install -y gcc-c++ patch readline readline-devel zlib zlib-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison iconv-devel"
           
         puts "Which version of ruby you want to install eg: 2.0.0-p0"
-        s = gets
+        s = gets.chomp
         begin
           system "rvm install #{s}"
         rescue
           system "rvm install 2.0.0"
         end
-      when system.to_i == 1
+      when 1
+        puts "here"
         system "sudo apt-get install build-essential git-core"
         system "sudo apt-get install curl"
         system "bash -s stable < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)"
         puts "Please enter your username of the ubuntu"
-        username = gets
+        username = gets.chomp
         str = <<-EOR
            echo '[[ -s "/home/#{username}/.rvm/scripts/rvm" ]] && source "/home/#{username}/.rvm/scripts/rvm"' >> ~/.bashrc
         EOR
@@ -35,10 +38,10 @@ module RVM
         system "source ~/.bashrc"
         system "type rvm | head -1"
         puts "Which version of ruby you want to install eg: 2.0.0-p0"
-        ver = gets
+        ver = gets.chomp
         system "rvm install #{ver.to_s}"
         system "rvm list"
-      when system.to_i == 2
+      when  2
         begin
           system "sudo port selfupdate"
           system "sudo port install apple-gcc42"
@@ -49,7 +52,7 @@ module RVM
         puts "1)ruby 1.8.7\n"
         puts "2)ruby 1.9.3\n"
         puts "3)ruby 2.0.0\n"
-        v = gets
+        v = gets.chomp
         if v.to_i == 1
           system "CC=/opt/local/bin/gcc-apple-4.2 rvm install ruby-1.8.7-p370 --enable-shared --without-tk --without-tcl"
         elsif v.to_i == 2
@@ -57,6 +60,12 @@ module RVM
         else
           system "CC=/opt/local/bin/gcc-apple-4.2 rvm install ruby-2.0.0-p0 --enable-shared --without-tk --without-tcl"
         end
+      when 4
+        puts "Windows"
+        system "bundle install"
+        system "mkdir pik_bin"
+        system "pik_install c:/pik_bin && cd c:/pik_bin"
+        system "pik install ruby"
       end
       system "sudo rvm pkg install openssl"
     end

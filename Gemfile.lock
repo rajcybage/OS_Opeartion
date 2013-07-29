@@ -15,13 +15,16 @@ GEM
       addressable (~> 2.3)
     mime-types (1.23)
     netrc (0.7.7)
+    pik (0.2.8)
     rest-client (1.6.7)
       mime-types (>= 1.16)
     rubyzip (0.9.9)
 
 PLATFORMS
+  java
   x86-mingw32
 
 DEPENDENCIES
   heroku
   heroku-api
+  pik
