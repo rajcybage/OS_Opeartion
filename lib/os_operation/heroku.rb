@@ -37,7 +37,8 @@ module Heroku
         else
           puts "Old Name and New name should not be same"  
         end 
-      end	
+      end
+    end  	
   end
 
   class LogoutApp
