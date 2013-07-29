@@ -26,11 +26,11 @@ module Heroku
       puts "Rename without checkout puts Y/N"
       s = gets
       if s.downcase.strip! == "y"
-       puts "Enter the new Name:"	
-       newname = gets	
-       puts "Enter the old Name:"
-       oldname = gets
-       unless newname.downcase != oldname.downcase
+        puts "Enter the new Name:"
+        newname = gets
+        puts "Enter the old Name:"
+        oldname = gets
+        unless newname.downcase != oldname.downcase
           system "heroku apps:rename #{newname} --app #{oldname}"
           system "git remote rm heroku"
           system "heroku git:remote -a #{newname}"
@@ -42,10 +42,9 @@ module Heroku
   end
 
   class LogoutApp
-   def self.logout
-    system "heroku logout"
-    puts "Logout for your heroku account"
-    
-   end 
+    def self.logout
+      system "heroku logout"
+      puts "Logout from your heroku account"
+    end
   end	
 end

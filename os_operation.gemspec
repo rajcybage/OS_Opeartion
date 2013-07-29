@@ -7,6 +7,6 @@ Gem::Specification.new do |s|
   s.description = "Operating system simple operation"
   s.authors     = ["Rajarshi Das"]
   s.email       = 'rdasarminus@gmail.com'
-  s.files       = ["lib/os_operation.rb", "lib/os_operation/heroku.rb"]
+  s.files       = ["lib/os_operation.rb", "lib/os_operation/heroku.rb", "lib/os_operation/rvm.rb"]
   s.homepage    = ''
 end
